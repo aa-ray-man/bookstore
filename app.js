@@ -15,11 +15,15 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/books", require("./routes/bookRoutes"));
 
 
-// Example Protected Route
+// Middlewares
 const { protect } = require("./middleware/authMiddleware");
 app.get("/api/protected", protect, (req, res) => {
   res.json({ message: `Welcome ${req.user.email}! This is a protected route.` });
 });
+
+const { errorHandler } = require("./middleware/errorMiddleware");
+app.use(errorHandler);
+
 
 // Connect to DB and Start Server
 mongoose

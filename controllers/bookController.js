@@ -12,13 +12,26 @@ exports.createBook = async (req, res) => {
 
 // Read all
 exports.getAllBooks = async (req, res) => {
-  try {
-    const books = await Book.find();
-    res.json(books);
-  } catch (err) {
-    res.status(500).json({ message: "Failed to fetch books" });
-  }
-};
+    try {
+      const { author, category, rating, search } = req.query;
+  
+      // Build filter object dynamically
+      let filter = {};
+  
+      if (author) filter.author = author;
+      if (category) filter.category = category;
+      if (rating) filter.rating = Number(rating);
+      if (search) {
+        filter.title = { $regex: search, $options: "i" }; // case-insensitive partial match
+      }
+  
+      const books = await Book.find(filter);
+      res.json(books);
+    } catch (err) {
+      res.status(500).json({ message: "Failed to fetch books", error: err.message });
+    }
+  };
+  
 
 // Read by ID
 exports.getBookById = async (req, res) => {
