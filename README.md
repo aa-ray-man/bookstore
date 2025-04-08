@@ -1,7 +1,7 @@
 # 📚 Bookstore RESTful API
 
 ## 🚀 Features
-A simple Node.js + Express.js + MongoDB REST API for managing a bookstore with authentication, filtering, search, and error handling.
+A Node.js + Express.js + MongoDB REST API for managing a bookstore with authentication, filtering, search, and error handling.
 
 - JWT-based user authentication (Signup/Login)
 - CRUD operations on books (Create, Read, Update, Delete)
