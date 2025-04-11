@@ -64,7 +64,7 @@ npm run start
 }
 ```
 
-###  Book Routes (Protected)
+###  📖 Book Routes (Protected)
 
 #### Create a new book  
 **POST** `/api/books`
